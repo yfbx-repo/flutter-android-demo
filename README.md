@@ -10,7 +10,7 @@ setBinding(new Binding([gradle: this]))
 evaluate(new File('../flutter_module/.android/include_flutter.groovy'))
 ```
 如果FlutterModule与Android项目不在同一目录下，可以写FlutterModule的绝对地址。    
-编译之后会在Android项目中生成`fluuter` module,与正常Android Module类似。
+编译之后会在Android项目中生成`flutter` Module,与正常Android Module类似。
 在Android项目App目录下的build.gradle中添加依赖：
 ```
 dependencies {
@@ -20,7 +20,7 @@ dependencies {
 ```
 
 
-### 混合开发框架 `闲鱼Flutter Booost`
+### 混合开发框架 `闲鱼Flutter Boost`
 
 1. 在FlutterModule中添加FlutterBoost依赖：    
 ```
@@ -29,7 +29,7 @@ dependencies {
       url: 'https://github.com/alibaba/flutter_boost.git'
       ref: 'v1.17.1-hotfixes'
 ```
-`pub get`之后在Android项目中会生成`flutter_boost` module    
+`pub get`之后在Android项目中会生成`flutter_boost` Module    
 
 2. 在Android项目中依赖`flutter_boost`:    
 ```
@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
 
 1. Android跳转Flutter,携带参数，并等待返回数据
 ```
-//Android
+//Android,startActivityForResult
 openFlutter("flutter_page_1", mapOf("data" to "data form native")) { _, data ->
     //取返回值
     val map = data?.getSerializableExtra(IFlutterViewContainer.RESULT_KEY) as? Map<*, *>
@@ -116,18 +116,15 @@ openFlutter("flutter_page_1", mapOf("data" to "data form native")) { _, data ->
 
 //Flutter,关闭时返回数据
 FlutterBoost.singleton.closeCurrent(result: {
-      'data': 'data form flutter page1',
+    'data': 'data form flutter page1',
 });    
 ```
 
 2. Flutter跳转Android携带参数，并等待返回数据
 ```
 //Flutter
-FlutterBoost.singleton.open("native://native_page_1",
-        urlParams: {"data": "data from flutter page1"}).then((map) {
-            
-      print("原生返回给Flutter的数据:$map");
-
+FlutterBoost.singleton.open("native://native_page_1",urlParams: {"data": "data from flutter page1"}).then((map) {
+    print("原生返回给Flutter的数据:$map");
 });
 
 //Android 返回数据给Flutter
@@ -143,15 +140,13 @@ finish()
 
 ```
 //Fluuter Page 1
- FlutterBoost.singleton.open("flutter_page_2",
-        urlParams: {"data": "data from flutter page1"}).then((map) {
-
-      print("flutter_page_2返回给flutter_page_1的数据：$map");
+ FlutterBoost.singleton.open("flutter_page_2",urlParams: {"data": "data from flutter page1"}).then((map) {
+    print("flutter_page_2返回给flutter_page_1的数据：$map");
 });
 
 //Fluuter Page 2,关闭时返回数据
 FlutterBoost.singleton.closeCurrent(result: {
-      'data': 'data form flutter page2',
+    'data': 'data form flutter page2',
 });    
 ```
 

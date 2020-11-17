@@ -3,7 +3,7 @@
 ### Android 与 Flutter 混合开发
 1. 新建Android项目   
 2. 新建Flutter Module(可以在Android项目外任意目录)   
-3. Android项目关联FlutterModule,这一步有两中选择    
+3. Android项目关联Flutter Module,这一步有两中选择    
 
 - Module依赖    
 
@@ -12,7 +12,7 @@
 setBinding(new Binding([gradle: this]))
 evaluate(new File('../flutter_module/.android/include_flutter.groovy'))
 ```
-如果FlutterModule与Android项目不在同一目录下，可以写FlutterModule的绝对地址。    
+如果Flutter Module与Android项目不在同一目录下，可以写Flutter Module的绝对地址。    
 编译之后会在Android项目中生成`flutter` Module,与正常Android Module类似。
 在Android项目App目录下的build.gradle中添加依赖：
 ```
@@ -22,7 +22,7 @@ dependencies {
 }
 ```
 - Maven库依赖    
-使用flutter命令，将FlutterModule生成aar,采用maven库的方式依赖，在Flutter Module执行：
+使用flutter命令，将Flutter Module生成aar,采用maven库的方式依赖，在Flutter Module执行：
 ```
 > flutter build aar --build-number 1.0.0
 
@@ -31,7 +31,7 @@ dependencies {
 ```
 执行完成后，命令执行结果中有maven库配置提示。    
 
-框架搭建完成，两边通过MethodChannel进行通信，可以实现相互跳转和数据传递等操作。
+框架搭建完成，两边通过`MethodChannel`进行通信，可以实现相互跳转和数据传递等操作。
 
 
     

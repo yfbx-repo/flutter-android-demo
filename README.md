@@ -18,9 +18,19 @@ dependencies {
     implementation project(':flutter')
 }
 ```
+框架搭建完成，两边通过MethodChannel进行通信，可以实现相互跳转和数据传递等操作。
 
 
-### 混合开发框架 `闲鱼Flutter Boost`
+    
+### 混合开发框架 
+
+#### 一、 [g_faraday](https://github.com/gfaraday/g_faraday)
+    
+  [g_faraday 说明文档](https://github.com/gfaraday/g_faraday)
+      
+
+
+#### 二、[闲鱼 Flutter Boost](https://github.com/alibaba/flutter_boost)
 
 1. 在FlutterModule中添加FlutterBoost依赖：    
 ```

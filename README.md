@@ -30,7 +30,11 @@ dependencies {
       
 
 
-#### 二、[闲鱼 Flutter Boost](https://github.com/alibaba/flutter_boost)
+#### 二、[闲鱼 Flutter Boost](https://github.com/alibaba/flutter_boost)    
+
+目前好像不维护了    
+
+- 集成步骤    
 
 1. 在FlutterModule中添加FlutterBoost依赖：    
 ```
@@ -111,9 +115,9 @@ class _MyAppState extends State<MyApp> {
   }
 }  
 ```
-至此混合开发框架搭建完成。
+框架搭建完成。
 
-### Android 与 Flutter 交互
+- Android 与 Flutter 交互
 
 1. Android跳转Flutter,携带参数，并等待返回数据
 ```

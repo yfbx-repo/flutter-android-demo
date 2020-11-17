@@ -3,7 +3,10 @@
 ### Android 与 Flutter 混合开发
 1. 新建Android项目   
 2. 新建Flutter Module(可以在Android项目外任意目录)   
-3. Android项目关联FlutterModule     
+3. Android项目关联FlutterModule,这一步有两中选择    
+
+- Module依赖    
+
 在Android项目`settings.gradle`中添加:
 ```
 setBinding(new Binding([gradle: this]))
@@ -18,6 +21,42 @@ dependencies {
     implementation project(':flutter')
 }
 ```
+- Maven库依赖    
+使用flutter命令，将FlutterModule生成aar,采用maven库的方式依赖，在Flutter Module执行：
+```
+> flutter build aar --build-number 1.0.0
+Running Gradle task 'assembleAarDebug'...
+Running Gradle task 'assembleAarDebug'... Done                     84.9s
+√ Built build\host\outputs\repo.
+
+Consuming the Module
+  1. Open <host>\app\build.gradle
+  2. Ensure you have the repositories configured, otherwise add them:
+
+      String storageUrl = System.env.FLUTTER_STORAGE_BASE_URL ?: "https://storage.googleapis.com"
+      repositories {
+        maven {
+            url 'D:\xxx\flutter_module\build\host\outputs\repo'
+        }
+        maven {
+            url '$storageUrl/download.flutter.io'
+        }
+      }
+
+  3. Make the host app depend on the Flutter module:
+
+    dependencies {
+      debugImplementation 'com.yuxiaor.mobile.faraday:flutter_debug:1.0.0'
+    }
+
+To learn more, visit https://flutter.dev/go/build-aar
+```
+执行完成后，命令执行结果中有maven库配置提示。    
+由于默认会生成所有版本的aar(debug/release/profile),执行时间比较长，可以添加命令参数，只生成一个版本，如只生成debug版本：
+```
+flutter build aar --no-release --no-profile --build-number 1.0.0
+```
+
 框架搭建完成，两边通过MethodChannel进行通信，可以实现相互跳转和数据传递等操作。
 
 

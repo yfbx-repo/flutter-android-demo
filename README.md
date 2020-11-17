@@ -25,12 +25,11 @@ dependencies {
 使用flutter命令，将FlutterModule生成aar,采用maven库的方式依赖，在Flutter Module执行：
 ```
 > flutter build aar --build-number 1.0.0
-```
-执行完成后，命令执行结果中有maven库配置提示。    
-由于默认会生成所有版本的aar(debug/release/profile),执行时间比较长，可以添加命令参数，只生成一个版本，如只生成debug版本：
-```
+
+//由于默认会生成所有版本的aar(debug/release/profile),执行时间比较长，可以添加命令参数，只生成一个版本，如只生成debug版本：
 > flutter build aar --no-release --no-profile --build-number 1.0.0
 ```
+执行完成后，命令执行结果中有maven库配置提示。    
 
 框架搭建完成，两边通过MethodChannel进行通信，可以实现相互跳转和数据传递等操作。
 

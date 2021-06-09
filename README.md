@@ -43,7 +43,7 @@ dependencies {
       
 
 
-####  [Deprecated]~~二、[闲鱼 Flutter Boost](https://github.com/alibaba/flutter_boost)~~
+#### ~~二、[闲鱼 Flutter Boost](https://github.com/alibaba/flutter_boost)~~ [Deprecated]
 旧版本的FlutterBoost集成过程，目前使用[g_faraday](https://github.com/gfaraday/g_faraday)，集成过程其实都差不多
 
 
